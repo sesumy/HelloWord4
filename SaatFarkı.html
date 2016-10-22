@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>7.Görev</title>
+<script type="text/javascript">
+function datediff(){
+	var oneDay = 24*60*60*1000; // saat*dakika*saniye*milisaniye
+	//SEÇÝLEN
+	
+	var gun = document.getElementById('gun')
+.options[document.getElementById('gun').selectedIndex].text;
+	
+	var ay = document.getElementById('ay')
+.options[document.getElementById('ay').selectedIndex].text;
+
+
+	var yil = document.getElementById('yil')
+.options[document.getElementById('yil').selectedIndex].text;
+
+	
+	chooseDate=yil + "," + ay + "," + gun;
+	//BUGÜNÜN TARÝHÝ
+	var dateObj = new Date();
+	var month = dateObj.getUTCMonth() + 1; //1 DEN 12 YE KADAR AYLAR	
+	var day = dateObj.getUTCDate();
+	var year = dateObj.getUTCFullYear();
+	 newdate = year + "," + month + "," + day;
+	
+
+		document.writeln("Seçilen Tarih: "+chooseDate);
+		document.writeln("<br>");
+		 
+		document.writeln("Þimdiki Tarih: "+newdate);
+		document.writeln("<br>");
+		 
+		var firstDate=new Date(yil,ay,gun);
+		
+		document.writeln("Seçilen Tam Tarih: "+firstDate);
+		document.writeln("<br>");
+		var secondDate=new Date(year,month,day);
+		
+		document.writeln("Þimdiki Tam Tarih: "+secondDate);
+		document.writeln("<br>");
+		document.writeln("<br>");
+
+		 
+		
+	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+	document.write("Yukarýda Belirtilen Tarihler arasý gün farký: "+diffDays);
+}
+</script>
+</head>
+<body>
+<script type="text/javascript">
+	var i=1;
+	document.write("<select id='gun'>");
+	for (i=1;i<=30;i++){
+		document.write("<option class="+i+">" + i + "</option>");
+	}
+	document.write("</select>");
+</script>
+
+<script type="text/javascript">
+	var i=1;
+	document.write("<select id='ay'>");
+	for (i=1;i<=12;i++){
+		document.write("<option class="+i+">" + i + "</option>");
+	}
+	document.write("</select>");
+</script>
+<script type="text/javascript">
+	var i=1907;
+	document.write("<select id='yil'>");
+	for (i=1907;i<=2016;i++)	{
+		document.write("<option class="+i+">" + i + "</option>");
+	}
+	document.write("</select>");
+</script>
+<button onclick="datediff()">Farký Hesapla</button>
+</body>
+</html>
